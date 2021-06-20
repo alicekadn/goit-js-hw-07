@@ -12,15 +12,17 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-const galleryRef = document.getElementById('gallery');
 
-images.forEach(image => {
-  const imgItem = `<li style='list-style: none; display: inline-flex; margin: auto;'>
-  <img src='${image.url}' alt='${image.alt}' style='margin: 10px; width: 360px; height: 300px;'>
-  </li>`
-  galleryRef.insertAdjacentHTML('beforeend', imgItem)
-});
+const galleryEl = document.querySelector('#gallery')
 
+
+galleryEl.classList.add('list')
+
+const addGallery = images.map(option => {
+  return `<li class='item'><img class='img' src='${option.url}' alt='${option.alt}'></li>`
+}).join('')
+
+galleryEl.insertAdjacentHTML('afterbegin', addGallery)
 
 galleryRef.style.display = 'flex'
 galleryRef.style.flexWrap = 'wrap'
